@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>03-02</title>
+    <title>03-03</title>
   </head>
   <body>
     <div id="app">
-      <h2 v-text="message"></h2>
+      <input type="text" id="a" v-bind:value="message" />
+      <br />
+      <img v-bind:src="imagePath" />
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
@@ -15,9 +17,13 @@
 
       createApp({
         setup() {
-          const message = ref("Hello vue!");
+          let message = ref("v-bind 디렉티브");
+          let imagePath = ref(
+            "https://contactsvc.bmaster.kro.kr/photos/18.jpg"
+          );
           return {
             message,
+            imagePath,
           };
         },
       }).mount("#app");
