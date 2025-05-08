@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06-02</title>
+    <style>
+      .test {
+        background-color: yellow;
+        border: double 4px gray;
+      }
+      .over {
+        background-color: orange;
+        width: 300px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <button
+        id="a"
+        :style="style1"
+        @mouseover.stop="overEvent"
+        @mouseout.stop="outEvent"
+      >
+        테스트
+      </button>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp, reactive } = Vue;
+
+      createApp({
+        setup() {
+          const style1 = reactive({
+            backgroundColor: "aqua",
+            color: "black",
+          });
+
+          const overEvent = () => {
+            style1.backgroundColor = "purple";
+            style1.color = "yellow";
+          };
+
+          const outEvent = () => {
+            style1.backgroundColor = "aqua";
+            style1.color = "black";
+          };
+
+          return {
+            style1,
+            overEvent,
+            outEvent,
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
